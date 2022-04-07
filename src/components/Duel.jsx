@@ -52,6 +52,7 @@ const Duel = () => {
   //   useEffects
 
   //   set inital states
+
   useEffect(() => {
     setPlayerPokemon(pokemon1);
     setComputerPokemon(pokemon2);
@@ -64,6 +65,7 @@ const Duel = () => {
     }
   }, [playerPokemon, computerPokemon]);
 
+  //   remove attack button while attacking
   useEffect(() => {
     const timer = setTimeout(() => {
       setAttacking(false);
