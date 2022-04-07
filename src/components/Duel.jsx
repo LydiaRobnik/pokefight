@@ -123,7 +123,9 @@ const Duel = () => {
         </div>
       )}
       <div>
-        {!attacking && <button onClick={() => startDuel()}>Attack</button>}
+        {!attacking && !winner && (
+          <button onClick={() => startDuel()}>Attack</button>
+        )}
       </div>
       <div>{winner && <p>{winner}</p>}</div>
     </div>
