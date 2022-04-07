@@ -12,7 +12,7 @@ const Duel = () => {
     },
     type: ['Ground'],
     base: {
-      HP: 50,
+      HP: 15,
       Attack: 60,
       Defense: 50,
       'Sp. Attack': 50,
@@ -31,7 +31,7 @@ const Duel = () => {
     },
     type: ['Water'],
     base: {
-      HP: 50,
+      HP: 20,
       Attack: 60,
       Defense: 48,
       'Sp. Attack': 65,
@@ -46,7 +46,7 @@ const Duel = () => {
   const [computerPokemon, setComputerPokemon] = useState();
   const [playerPokemonHP, setPlayerPokemonHP] = useState();
   const [computerPokemonHP, setComputerPokemonHP] = useState();
-  const [winner, setWinner] = useState();
+  const [winner, setWinner] = useState(false);
   const [attacking, setAttacking] = useState(false);
 
   //   useEffects
@@ -65,56 +65,61 @@ const Duel = () => {
     }
   }, [playerPokemon, computerPokemon]);
 
-  //   remove attack button while attacking
+  //   bring attack button back after attacking
   useEffect(() => {
     const timer = setTimeout(() => {
       setAttacking(false);
-    }, 1500);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [attacking]);
 
   useEffect(() => {
-    decideWinner();
+    if (!winner) {
+      decideWinner();
+    }
   }, [playerPokemonHP, computerPokemonHP]);
 
   //   functions
 
-  const startDuel = () => {
-    setAttacking(true);
-    if (playerPokemon.base.Speed > computerPokemon.base.Speed) {
-      playerAttack();
-      setTimeout(() => computerAtack(), 1000);
-    } else if (playerPokemon.base.Speed < computerPokemon.base.Speed) {
-      computerAtack();
-      setTimeout(() => playerAttack(), 1000);
-    }
-  };
-
-  const playerAttack = () => {
+  function playerAttack() {
     const newHP =
       computerPokemonHP -
       (playerPokemon.base.Attack - computerPokemon.base.Defense);
     setComputerPokemonHP(newHP);
-  };
+  }
 
-  const computerAtack = () => {
+  function computerAtack() {
     const newHP =
       playerPokemonHP -
       (computerPokemon.base.Attack - playerPokemon.base.Defense);
     setPlayerPokemonHP(newHP);
-  };
+  }
 
-  const decideWinner = () => {
-    if (playerPokemonHP < 0) {
+  function decideWinner() {
+    if (playerPokemonHP <= 0) {
       setWinner('Computer wins');
-      console.log('computer wins');
-    } else if (computerPokemonHP < 0) {
+    } else if (computerPokemonHP <= 0) {
       setWinner('Player wins');
-      console.log('player wins');
     } else {
       return;
     }
-  };
+  }
+  function startDuel() {
+    // remove attack button while attacking
+    setAttacking(true);
+    // decide who attacks first based on speed characteristic
+    if (playerPokemon.base.Speed > computerPokemon.base.Speed) {
+      playerAttack();
+      setTimeout(() => {
+        computerAtack();
+      }, 2000);
+    } else if (playerPokemon.base.Speed < computerPokemon.base.Speed) {
+      computerAtack();
+      setTimeout(() => {
+        playerAttack();
+      }, 2000);
+    }
+  }
 
   return (
     <div>
