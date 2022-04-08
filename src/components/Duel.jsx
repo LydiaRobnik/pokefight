@@ -1,45 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Duel = () => {
-  //   mockdata
-  const pokemon1 = {
-    id: 51,
-    name: {
-      english: 'Dugtrio',
-      japanese: 'ダグトリオ',
-      chinese: '三地鼠',
-      french: 'Triopikeur',
-    },
-    type: ['Ground'],
-    base: {
-      HP: 35,
-      Attack: 60,
-      Defense: 50,
-      'Sp. Attack': 50,
-      'Sp. Defense': 70,
-      Speed: 120,
-    },
-  };
-
-  const pokemon2 = {
-    id: 54,
-    name: {
-      english: 'Psyduck',
-      japanese: 'コダック',
-      chinese: '可达鸭',
-      french: 'Psykokwak',
-    },
-    type: ['Water'],
-    base: {
-      HP: 100,
-      Attack: 60,
-      Defense: 48,
-      'Sp. Attack': 65,
-      'Sp. Defense': 50,
-      Speed: 55,
-    },
-  };
-
+const Duel = ({ selectedPokemon }) => {
   // useStates
 
   const [playerPokemon, setPlayerPokemon] = useState();
@@ -50,12 +11,21 @@ const Duel = () => {
   const [attacking, setAttacking] = useState(false);
 
   //   useEffects
+  useEffect(() => {
+    const randomID = Math.floor(Math.random() * 809);
+    fetch(`https://pokefight-backend.herokuapp.com/pokemon/${randomID}`)
+      .then((res) => res.json())
+      .then((data) => setComputerPokemon(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   //   set inital states
 
   useEffect(() => {
-    setPlayerPokemon(pokemon1);
-    setComputerPokemon(pokemon2);
+    if (selectedPokemon) {
+      setPlayerPokemon(selectedPokemon);
+      // setComputerPokemon(pokemon2);
+    }
   }, []);
 
   useEffect(() => {

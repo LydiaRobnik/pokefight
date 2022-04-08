@@ -1,18 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const PokemonCard = ({ pokemon }) => {
+const PokemonCard = ({ pokemon, choosePokemon }) => {
   return (
     <>
-      <NavLink to="/pokemon/:id">
-        <div>
+      <div>
+        <NavLink to="/pokemon/:id">
           PokemonCard
           <p>{pokemon.id}</p>
           <p>{pokemon.name.english}</p>
           <p>{pokemon.name.japanese}</p>
-          {/* <img src="" alt="" /> */}
-        </div>
-      </NavLink>
+        </NavLink>
+        <button onClick={(e) => choosePokemon(pokemon)}>Select</button>
+        {/* <img src="" alt="" /> */}
+      </div>
     </>
   );
 };
