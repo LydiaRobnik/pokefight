@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Duel = ({ selectedPokemon }) => {
   // useStates
 
-  const [playerPokemon, setPlayerPokemon] = useState();
+  const [playerPokemon, setPlayerPokemon] = useState(selectedPokemon);
   const [computerPokemon, setComputerPokemon] = useState();
   const [playerPokemonHP, setPlayerPokemonHP] = useState();
   const [computerPokemonHP, setComputerPokemonHP] = useState();
@@ -20,14 +20,6 @@ const Duel = ({ selectedPokemon }) => {
   }, []);
 
   //   set inital states
-
-  useEffect(() => {
-    if (selectedPokemon) {
-      setPlayerPokemon(selectedPokemon);
-      // setComputerPokemon(pokemon2);
-    }
-  }, []);
-
   useEffect(() => {
     if (playerPokemon && computerPokemon) {
       setPlayerPokemonHP(playerPokemon.base.HP);
