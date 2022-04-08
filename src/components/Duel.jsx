@@ -11,6 +11,7 @@ const Duel = ({ selectedPokemon }) => {
   const [attacking, setAttacking] = useState(false);
 
   //   useEffects
+  // get random enemy pokemon
   useEffect(() => {
     const randomID = Math.floor(Math.random() * 809);
     fetch(`https://pokefight-backend.herokuapp.com/pokemon/${randomID}`)
@@ -47,14 +48,22 @@ const Duel = ({ selectedPokemon }) => {
     const newHP =
       computerPokemonHP -
       (playerPokemon.base.Attack - computerPokemon.base.Defense);
-    setComputerPokemonHP(newHP);
+    if (newHP <= computerPokemonHP) {
+      setComputerPokemonHP(newHP);
+    } else {
+      setComputerPokemonHP((prev) => prev - 5);
+    }
   }
 
   function computerAtack() {
     const newHP =
       playerPokemonHP -
       (computerPokemon.base.Attack - playerPokemon.base.Defense);
-    setPlayerPokemonHP(newHP);
+    if (newHP <= playerPokemonHP) {
+      setPlayerPokemonHP(newHP);
+    } else {
+      setPlayerPokemonHP((prev) => prev - 5);
+    }
   }
 
   function decideWinner() {
@@ -87,13 +96,19 @@ const Duel = ({ selectedPokemon }) => {
     <div>
       {playerPokemon && computerPokemon && !winner && (
         <div>
-          <p>Player HP {playerPokemonHP}</p>
-          <p>Computer HP {computerPokemonHP}</p>
+          <p>
+            {playerPokemon.name.english} Player HP {playerPokemonHP}
+          </p>
+          <p>
+            {computerPokemon.name.english} Computer HP {computerPokemonHP}
+          </p>
         </div>
       )}
       <div>
         {!attacking && !winner && (
-          <button onClick={() => startDuel()}>Attack</button>
+          <>
+            <button onClick={() => startDuel()}>Attack</button>
+          </>
         )}
       </div>
       <div>{winner && <p>{winner}</p>}</div>
