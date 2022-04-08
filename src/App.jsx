@@ -1,11 +1,19 @@
 import './App.css';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import PokemonContainer from './components/PokemonContainer.jsx';
-import cors from 'cors';
 import PokemonDetail from './components/PokemonDetail';
 import Duel from './components/Duel';
 
 function App() {
+  const [allPokemon, setAllPokemon] = useState();
+
+  useEffect(() => {
+    fetch('https://pokefight-backend.herokuapp.com/pokemon/')
+      .then((res) => res.json())
+      .then((data) => setAllPokemon(data))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className="App">
       <header>
@@ -13,7 +21,10 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<PokemonContainer />}></Route>
+          <Route
+            path="/"
+            element={<PokemonContainer allPokemon={allPokemon} />}
+          ></Route>
           <Route path="/pokemon/:id" element={<PokemonDetail />}></Route>
           <Route path="/duel" element={<Duel />}></Route>
         </Routes>

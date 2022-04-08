@@ -12,7 +12,7 @@ const Duel = () => {
     },
     type: ['Ground'],
     base: {
-      HP: 15,
+      HP: 35,
       Attack: 60,
       Defense: 50,
       'Sp. Attack': 50,
@@ -31,7 +31,7 @@ const Duel = () => {
     },
     type: ['Water'],
     base: {
-      HP: 20,
+      HP: 100,
       Attack: 60,
       Defense: 48,
       'Sp. Attack': 65,
