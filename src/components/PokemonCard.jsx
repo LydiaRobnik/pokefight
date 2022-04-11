@@ -4,8 +4,8 @@ import {Card, CardActions, CardContent, CardMedia, Button, Typography, shadows} 
 import { purple, deepPurple, green, lightGreen, grey, deepOrange, lightBlue, amber, pink, red, brown, cyan  } from '@mui/material/colors';
 import "../styles/cardStyles.css"
 
-const PokemonCard = ({pokemon}) => {
 
+const PokemonCard = ({ pokemon, choosePokemon }) => {
   // const cardImages = [
   //   { 'src' : `../img/${pokemon.id}.png`   }
   // ]
@@ -26,6 +26,7 @@ const PokemonCard = ({pokemon}) => {
 
   }
 
+
   return (
     <>
         <NavLink to='/pokemon/:id'>
@@ -45,20 +46,18 @@ const PokemonCard = ({pokemon}) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                {pokemon && pokemon.type.map((type) => 
-
-                  
+                {pokemon && pokemon.type.map((type) =>                  
                     <>
                       <Button variant="contained" style={{backgroundColor: typeColor[type]}}>{type}</Button>
-                    </>
-                  
+                    </>                 
                 )}
               </CardActions>
             </Card>
         </NavLink>
+        <button onClick={(e) => choosePokemon(pokemon)}>Select</button>
+        {/* <img src="" alt="" /> */}
     </>
-
-  )
+  );
 }
 
 export default PokemonCard
