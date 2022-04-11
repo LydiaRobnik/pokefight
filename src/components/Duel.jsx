@@ -45,15 +45,24 @@ const Duel = ({ selectedPokemon }) => {
 
   //   functions
 
-  function playerAttack(category) {
-    let attack;
+  function choosePlayerAttack(category) {
     if (category === 'normal') {
-      const attack = playerPokemon.base.Attack;
-      return attack;
-    } else if (CallToAction === 'special') {
-      const attack = playerPokemon.base['Sp. Attack'];
-      return attack;
+      return playerPokemon.base.Attack;
+    } else if (category === 'special') {
+      return playerPokemon.base['Sp. Attack'];
     }
+  }
+
+  function chooseComputerAttack(category) {
+    if (category === 'normal') {
+      return computerPokemon.base.Attack;
+    } else if (category === 'special') {
+      return computerPokemon.base['Sp. Attack'];
+    }
+  }
+
+  function playerAttack(category) {
+    const attack = choosePlayerAttack(category);
     const newHP = computerPokemonHP - (attack - computerPokemon.base.Defense);
     if (newHP <= computerPokemonHP - 5) {
       setComputerPokemonHP(newHP);
@@ -63,17 +72,9 @@ const Duel = ({ selectedPokemon }) => {
   }
 
   function computerAtack(category) {
-    let attack;
-    if (category === 'normal') {
-      const attack = computerPokemon.base.Attack;
-      return attack;
-    } else if (CallToAction === 'special') {
-      const attack = computerPokemon.base['Sp. Attack'];
-      return attack;
-    }
-    const newHP =
-      playerPokemonHP -
-      (computerPokemon.base.Attack - playerPokemon.base.Defense);
+    const attack = chooseComputerAttack(category);
+    console.log(attack);
+    const newHP = playerPokemonHP - (attack - playerPokemon.base.Defense);
     if (newHP <= playerPokemonHP - 5) {
       setPlayerPokemonHP(newHP);
     } else {
