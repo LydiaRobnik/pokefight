@@ -48,7 +48,7 @@ const Duel = ({ selectedPokemon }) => {
     const newHP =
       computerPokemonHP -
       (playerPokemon.base.Attack - computerPokemon.base.Defense);
-    if (newHP <= computerPokemonHP) {
+    if (newHP <= computerPokemonHP - 5) {
       setComputerPokemonHP(newHP);
     } else {
       setComputerPokemonHP((prev) => prev - 5);
@@ -59,7 +59,7 @@ const Duel = ({ selectedPokemon }) => {
     const newHP =
       playerPokemonHP -
       (computerPokemon.base.Attack - playerPokemon.base.Defense);
-    if (newHP <= playerPokemonHP) {
+    if (newHP <= playerPokemonHP - 5) {
       setPlayerPokemonHP(newHP);
     } else {
       setPlayerPokemonHP((prev) => prev - 5);
