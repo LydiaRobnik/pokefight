@@ -1,15 +1,8 @@
 import React from 'react'
 import {NavLink } from "react-router-dom";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import {Card, CardActions, CardContent, CardMedia, Button, Typography, shadows} from '@mui/material';
 import { purple, deepPurple, green, lightGreen, grey, deepOrange, lightBlue, amber, pink, red, brown, cyan  } from '@mui/material/colors';
 import "../styles/cardStyles.css"
-
-
 
 const PokemonCard = ({pokemon}) => {
 
@@ -36,13 +29,13 @@ const PokemonCard = ({pokemon}) => {
   return (
     <>
         <NavLink to='/pokemon/:id'>
-            <Card sx={{maxWidth: 345}}>
-              <CardMedia
+            <Card sx={{maxWidth: 345, boxShadow: 3 }}>
+              <CardMedia 
+                className="cardBackground"
                 component="img"
                 alt="pokemon"
                 height="200"
                 image="../../img/1.png"
-                
               />
               <CardContent>
                 <p>Nr. {pokemon.id}</p>
@@ -59,7 +52,7 @@ const PokemonCard = ({pokemon}) => {
                       <Button variant="contained" style={{backgroundColor: typeColor[type]}}>{type}</Button>
                     </>
                   
-                 )}
+                )}
               </CardActions>
             </Card>
         </NavLink>
