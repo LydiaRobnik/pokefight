@@ -35,7 +35,8 @@ const PokemonContainer = () => {
         <Grid item xs={12} s={10} md={9}>
           {/* <Pagination numberOfPokemons={allPokemon.length} pokemonsPerPage={pokemonsPerPage}  /> */}
           {/* <Pagination count={17} variant="outlined" shape="rounded" /> */}
-          <Grid container spacing={2}>
+          <Grid container spacing={3
+          }>
             {allPokemon && allPokemon.map(pokemon => 
               (<Grid item key={pokemon.id} >
                 <PokemonCard pokemon={pokemon}/>
