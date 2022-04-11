@@ -1,22 +1,18 @@
 import React, {useState} from 'react'
 import { NavLink } from 'react-router-dom';
 import PokemonCard from './PokemonCard'
-import Grid from '@mui/material/Grid'
+import {Grid, CircularProgress} from '@mui/material'
 // import Pagination from '@mui/material/Pagination'
-import Pagination from './Pagination'
 import "../styles/cardStyles.css"
+import Pagination from './Pagination'
 
+const PokemonContainer = ({ allPokemon, choosePokemon, loading, currentPokemons, pokemonsPerPage, paginate }) => {
 
-    // const indexOfLastPokemon = currentPage * pokemonsPerPage;
-    // const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
-    // const currentPokemons = allPokemon.slice(indexOfFirstPokemon, indexOfLastPokemon);
-    // const paginate = () => {}
-
-const PokemonContainer = ({ allPokemon, choosePokemon }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pokemonsPerPage, setPokemonsPerPage] = useState(50);
-
-  console.log('test')
+  if(loading) {
+    return <>
+          <CircularProgress />
+    </>
+  }
 
   return (
     <>
@@ -29,9 +25,12 @@ const PokemonContainer = ({ allPokemon, choosePokemon }) => {
         <Grid item xs={12} s={10} md={9}>
           {/* <Pagination numberOfPokemons={allPokemon.length} pokemonsPerPage={pokemonsPerPage}  /> */}
           {/* <Pagination count={17} variant="outlined" shape="rounded" /> */}
-          <Grid container spacing={3
+          <Grid container spacing={2
           }>
-            {allPokemon && allPokemon.map(pokemon => 
+            <Grid item xs={12}>
+              <Pagination pokemonsPerPage={pokemonsPerPage} numberOfPokemons={allPokemon.length} paginate={paginate}/>
+            </Grid>
+            {allPokemon && currentPokemons.map(pokemon => 
               (<Grid item key={pokemon.id} >
                 <PokemonCard pokemon={pokemon} choosePokemon={choosePokemon} />
               </Grid>)

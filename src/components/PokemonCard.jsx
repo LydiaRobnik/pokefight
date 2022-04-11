@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink } from "react-router-dom";
-import {Card, CardActions, CardContent, CardMedia, Button, Typography, shadows} from '@mui/material';
+import {Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
 import { purple, deepPurple, green, lightGreen, grey, deepOrange, lightBlue, amber, pink, red, brown, cyan  } from '@mui/material/colors';
 import "../styles/cardStyles.css"
 
@@ -30,9 +30,9 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
   return (
     <>
         <NavLink to='/pokemon/:id'>
-            <Card sx={{maxWidth: 345, boxShadow: 3 }}>
+            <Card sx={{width: 250, boxShadow: 3 }} className='card'>
               <CardMedia 
-                className="cardBackground"
+                className="cardBackground cardHover"
                 component="img"
                 alt="pokemon"
                 height="200"
@@ -45,17 +45,18 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
                   <p>{pokemon.name.japanese}</p>
                 </Typography>
               </CardContent>
-              <CardActions>
-                {pokemon && pokemon.type.map((type) =>                  
-                    <>
-                      <Button variant="contained" style={{backgroundColor: typeColor[type]}}>{type}</Button>
-                    </>                 
-                )}
+              <CardActions sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'space-around' }}>
+                <div>
+                  {pokemon && pokemon.type.map((type) =>                  
+                      <>
+                        <Button variant="contained" sx={{bgcolor: typeColor[type], m: 1, cursor: 'not-allowed'}}>{type}</Button>
+                      </>                 
+                  )}
+                </div>
+                <Button className='select' variant="outlined" sx={{m: 0.5}}  onClick={(e) => choosePokemon(pokemon)}>Select</Button>
               </CardActions>
             </Card>
         </NavLink>
-        <button onClick={(e) => choosePokemon(pokemon)}>Select</button>
-        {/* <img src="" alt="" /> */}
     </>
   );
 }
