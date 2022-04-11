@@ -1,0 +1,14 @@
+button{color:white}
+a{text-decoration: none}
+h1{color: white}
+
+.background{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 85%, rgba(0,212,255,1) 100%);
+}
+
+.cardBackground{
+    background: radial-gradient(circle, rgba(255,255,255,1) 22%, rgba(249,209,160,1) 100%);
+}

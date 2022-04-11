@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import PokemonContainer from './components/PokemonContainer.jsx';
 import PokemonDetail from './components/PokemonDetail';
 import Duel from './components/Duel';
@@ -24,9 +24,9 @@ function App() {
   }
   return (
     <div className="App">
-      <header>
-        <h1>PokeFight</h1>
-      </header>
+      {/* <header>
+
+      </header> */}
       <main>
         <Routes>
           <Route
