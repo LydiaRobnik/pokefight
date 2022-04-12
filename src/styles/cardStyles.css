@@ -1,6 +1,22 @@
-button{color:white}
+@font-face {
+    font-family: pokemon;
+    src: url('../../public/fonts/Pokemon Solid.ttf');
+}
+
+body{
+    font-family: sans-serif;
+}
+
+button{
+    color:white}
+
 a{text-decoration: none}
-h1{color: white}
+
+h1{color: white;
+    font-family: pokemon;
+    font-size: 3rem;
+    letter-spacing: 2px;
+}
 
 .background{
     /* display: flex;
@@ -11,4 +27,10 @@ h1{color: white}
 
 .cardBackground{
     background: radial-gradient(circle, rgba(255,255,255,1) 22%, rgba(249,209,160,1) 100%);
+}
+
+.cardHover:hover {opacity: 1}
+
+.paginationSection{
+    margin-right: 5.5rem;
 }
