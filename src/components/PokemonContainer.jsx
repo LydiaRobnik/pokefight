@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
 import PokemonCard from './PokemonCard'
 import {Grid, CircularProgress, TextField} from '@mui/material'
 import "../styles/cardStyles.css"

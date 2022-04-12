@@ -21,7 +21,7 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
     Fighting: red[500],
     Psychic: purple[400]
   }
-  
+
   return (
     <>
         
@@ -48,8 +48,8 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
                       </>                 
                   )}
                 </Box>
-                    <Button variant="outlined" color='primary' sx={{m: 0.5, width: 1}}><NavLink className="detailsButton" to='/pokemon/:id' > Details </NavLink></Button>
-                  <Button variant="outlined" sx={{m: 0.5, width: 1}}  onClick={(e) => choosePokemon(pokemon)}><NavLink className="detailsButton" to="/duel">Play</NavLink></Button>
+                <NavLink className="detailsButton" to='/pokemon/:id' ><Button sx={{m: 0.5, width: 200}} variant="outlined" color='primary'>Details</Button></NavLink>
+                <NavLink className="detailsButton" to="/duel"><Button sx={{m: 0.5, width: 200}} variant="outlined" color='primary' onClick={(e) => choosePokemon(pokemon)}>Play</Button></NavLink>
               </CardActions>
             </Card>
         

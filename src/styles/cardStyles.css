@@ -3,14 +3,23 @@
     src: url('../../public/fonts/Pokemon Solid.ttf');
 }
 
+html{
+    min-height: 100%;
+    position:relative;
+    background-color: rgba(2,0,36,1);
+}
+
 body{
     font-family: sans-serif;
+    height:100%; 
 }
 
 button{
     color:white}
 
-a{text-decoration: none}
+a{text-decoration: none;
+    margin: 0;
+}
 
 h1{color: white;
     font-family: pokemon;
@@ -37,6 +46,20 @@ p{
     margin-right: 5.5rem;
 }
 
-.detailsButton{
-    color: #1976d2
+a.detailsButton{
+    color: #1976d2;
+    margin:0
+}
+
+.arena{
+    background-image: url('../../public/img/Arena1.jpg');
+    background-repeat: no-repeat;
+    background-size: 1600px auto;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow:hidden;
+    z-index:-1;
 }

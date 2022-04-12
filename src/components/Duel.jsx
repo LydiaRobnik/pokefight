@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import "../styles/cardStyles.css"
+import {Button, Box} from '@mui/material';
 
 const Duel = ({ selectedPokemon }) => {
   // useStates
@@ -93,27 +95,31 @@ const Duel = ({ selectedPokemon }) => {
   }
 
   return (
-    <div>
-      {playerPokemon && computerPokemon && !winner && (
+
+      <Box className='arena' sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'center', alignItems: 'center' }}>
         <div>
-          <p>
-            {playerPokemon.name.english} Player HP {playerPokemonHP}
-          </p>
-          <p>
-            {computerPokemon.name.english} Computer HP {computerPokemonHP}
-          </p>
+          {playerPokemon && computerPokemon && !winner && (
+            <div>
+              <p>
+                {playerPokemon.name.english} Player HP {playerPokemonHP}
+              </p>
+              <p>
+                {computerPokemon.name.english} Computer HP {computerPokemonHP}
+              </p>
+            </div>
+          )}
+          <div>
+            {!attacking && !winner && (
+              <>
+                <Button variant="contained" color="success" onClick={() => startDuel()}>Attack</Button>
+              </>
+            )}
+          </div>
+          <div>{winner && <p>{winner}</p>}</div>
         </div>
-      )}
-      <div>
-        {!attacking && !winner && (
-          <>
-            <button onClick={() => startDuel()}>Attack</button>
-          </>
-        )}
-      </div>
-      <div>{winner && <p>{winner}</p>}</div>
-    </div>
+      </Box>
+  
   );
-};
+};    
 
 export default Duel;
