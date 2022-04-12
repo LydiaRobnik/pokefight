@@ -16,12 +16,14 @@ h1{color: white;
     font-family: pokemon;
     font-size: 3rem;
     letter-spacing: 2px;
+    text-align: center;
+}
+
+p{
+    margin: 0.5rem 0;
 }
 
 .background{
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 85%, rgba(0,212,255,1) 100%);
 }
 
@@ -33,4 +35,8 @@ h1{color: white;
 
 .paginationSection{
     margin-right: 5.5rem;
+}
+
+.detailsButton{
+    color: #1976d2
 }

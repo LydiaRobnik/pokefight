@@ -1,14 +1,11 @@
 import React from 'react'
 import {NavLink } from "react-router-dom";
-import {Card, CardActions, CardContent, CardMedia, Button, Typography } from '@mui/material';
+import {Card, CardActions, CardContent, CardMedia, Button, Typography, Box } from '@mui/material';
 import { purple, deepPurple, green, lightGreen, grey, deepOrange, lightBlue, amber, pink, red, brown, cyan  } from '@mui/material/colors';
 import "../styles/cardStyles.css"
 
 
 const PokemonCard = ({ pokemon, choosePokemon }) => {
-  // const cardImages = [
-  //   { 'src' : `../img/${pokemon.id}.png`   }
-  // ]
   
   const typeColor = {
     Grass : green[600],
@@ -23,13 +20,11 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
     Fairy: pink[300],
     Fighting: red[500],
     Psychic: purple[400]
-
   }
-
-
+  
   return (
     <>
-        <NavLink to='/pokemon/:id'>
+        
             <Card sx={{width: 250, boxShadow: 3 }} className='card'>
               <CardMedia 
                 className="cardBackground cardHover"
@@ -38,25 +33,26 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
                 height="200"
                 image="../../img/1.png"
               />
-              <CardContent>
+              <CardContent sx={{py: 0.5}}>
                 <p>Nr. {pokemon.id}</p>
                 <Typography gutterBottom variant="h5" component="div">
                   <p>{pokemon.name.english}</p>
                   <p>{pokemon.name.japanese}</p>
                 </Typography>
               </CardContent>
-              <CardActions sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'space-around' }}>
-                <div>
+              <CardActions sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'center' }}>
+                <Box sx={{display: 'flex', flexDirection: 'row',  justifyContent: 'center', width: 1 }}>
                   {pokemon && pokemon.type.map((type) =>                  
                       <>
-                        <Button variant="contained" sx={{bgcolor: typeColor[type], m: 1, cursor: 'not-allowed'}}>{type}</Button>
+                        <Button variant="contained" sx={{bgcolor: typeColor[type], m:0.5, width: '40%',cursor: 'not-allowed'}}>{type}</Button>
                       </>                 
                   )}
-                </div>
-                <Button className='select' variant="outlined" sx={{m: 0.5}}  onClick={(e) => choosePokemon(pokemon)}>Select</Button>
+                </Box>
+                    <Button variant="outlined" color='primary' sx={{m: 0.5, width: 1}}><NavLink className="detailsButton" to='/pokemon/:id' > Details </NavLink></Button>
+                  <Button variant="outlined" sx={{m: 0.5, width: 1}}  onClick={(e) => choosePokemon(pokemon)}><NavLink className="detailsButton" to="/duel">Play</NavLink></Button>
               </CardActions>
             </Card>
-        </NavLink>
+        
     </>
   );
 }
