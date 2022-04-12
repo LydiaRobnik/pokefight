@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react'
 import { NavLink } from 'react-router-dom';
-import PokemonCard from './PokemonCard';
-import Grid from '@mui/material/Grid';
-// import Pagination from '@mui/material/Pagination'
-import Pagination from './Pagination';
-import '../styles/cardStyles.css';
+import PokemonCard from './PokemonCard'
+import {Grid, CircularProgress} from '@mui/material'
+import "../styles/cardStyles.css"
+import Pagination from './Pagination'
 
-// const indexOfLastPokemon = currentPage * pokemonsPerPage;
-// const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
-// const currentPokemons = allPokemon.slice(indexOfFirstPokemon, indexOfLastPokemon);
-// const paginate = () => {}
+const PokemonContainer = ({ allPokemon, choosePokemon, loading, currentPokemons, pokemonsPerPage, paginate }) => {
 
-const PokemonContainer = ({ allPokemon, choosePokemon }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pokemonsPerPage, setPokemonsPerPage] = useState(50);
+  if(loading) {
+    return <>
+          <CircularProgress />
+    </>
+  }
 
   return (
     <>
@@ -23,6 +21,7 @@ const PokemonContainer = ({ allPokemon, choosePokemon }) => {
           <h1>Play Pokemon</h1>
         </Grid>
         <Grid item xs={12} s={10} md={9}>
+<<<<<<< HEAD
           {/* <Pagination numberOfPokemons={allPokemon.length} pokemonsPerPage={pokemonsPerPage}  /> */}
           {/* <Pagination count={17} variant="outlined" shape="rounded" /> */}
           <Grid container spacing={3}>
@@ -35,6 +34,18 @@ const PokemonContainer = ({ allPokemon, choosePokemon }) => {
                   />
                 </Grid>
               ))}
+=======
+          <Grid container spacing={2
+          }>
+            <Grid item xs={12}>
+              <Pagination pokemonsPerPage={pokemonsPerPage} numberOfPokemons={allPokemon.length} paginate={paginate}/>
+            </Grid>
+            {allPokemon && currentPokemons.map(pokemon => 
+              (<Grid item key={pokemon.id} >
+                <PokemonCard pokemon={pokemon} choosePokemon={choosePokemon} />
+              </Grid>)
+            )}
+>>>>>>> 801a0ea3ec0e53bc1bc74816b34f189900b6f449
           </Grid>
         </Grid>
       </Grid>
