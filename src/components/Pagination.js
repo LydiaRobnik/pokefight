@@ -1,4 +1,4 @@
-import { paginationItemClasses } from '@mui/material'
+import { Button } from '@mui/material'
 import React from 'react'
 
 const Pagination = ({pokemonsPerPage, numberOfPokemons, paginate}) => {
@@ -10,11 +10,10 @@ const Pagination = ({pokemonsPerPage, numberOfPokemons, paginate}) => {
 
     return (
     <>
-        <nav>   
+        <nav className='paginationSection'>   
                 {pageNumbers.map(number => (
-                    <button key={number} className='paginationButton'>
-                        <a onClick={() => paginate(number)} href="!#">{number}</a>
-                    </button>
+                    <Button key={number} variant="contained" size="small" sx={{p:0, m:0.5}} onClick={() => paginate(number) }>{number}
+                    </Button>
                 ))}          
         </nav>
     </>

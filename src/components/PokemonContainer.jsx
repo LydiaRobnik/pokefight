@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { NavLink } from 'react-router-dom';
 import PokemonCard from './PokemonCard'
 import {Grid, CircularProgress} from '@mui/material'
-// import Pagination from '@mui/material/Pagination'
 import "../styles/cardStyles.css"
 import Pagination from './Pagination'
 
@@ -23,8 +22,6 @@ const PokemonContainer = ({ allPokemon, choosePokemon, loading, currentPokemons,
           <h1>Play Pokemon</h1>
         </Grid>
         <Grid item xs={12} s={10} md={9}>
-          {/* <Pagination numberOfPokemons={allPokemon.length} pokemonsPerPage={pokemonsPerPage}  /> */}
-          {/* <Pagination count={17} variant="outlined" shape="rounded" /> */}
           <Grid container spacing={2
           }>
             <Grid item xs={12}>
