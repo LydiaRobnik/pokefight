@@ -1,3 +1,4 @@
+import { CallToAction } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
 
 const Duel = ({ selectedPokemon }) => {
@@ -44,10 +45,25 @@ const Duel = ({ selectedPokemon }) => {
 
   //   functions
 
-  function playerAttack() {
-    const newHP =
-      computerPokemonHP -
-      (playerPokemon.base.Attack - computerPokemon.base.Defense);
+  function choosePlayerAttack(category) {
+    if (category === 'normal') {
+      return playerPokemon.base.Attack;
+    } else if (category === 'special') {
+      return playerPokemon.base['Sp. Attack'];
+    }
+  }
+
+  function chooseComputerAttack(category) {
+    if (category === 'normal') {
+      return computerPokemon.base.Attack;
+    } else if (category === 'special') {
+      return computerPokemon.base['Sp. Attack'];
+    }
+  }
+
+  function playerAttack(category) {
+    const attack = choosePlayerAttack(category);
+    const newHP = computerPokemonHP - (attack - computerPokemon.base.Defense);
     if (newHP <= computerPokemonHP - 5) {
       setComputerPokemonHP(newHP);
     } else {
@@ -55,10 +71,10 @@ const Duel = ({ selectedPokemon }) => {
     }
   }
 
-  function computerAtack() {
-    const newHP =
-      playerPokemonHP -
-      (computerPokemon.base.Attack - playerPokemon.base.Defense);
+  function computerAtack(category) {
+    const attack = chooseComputerAttack(category);
+    console.log(attack);
+    const newHP = playerPokemonHP - (attack - playerPokemon.base.Defense);
     if (newHP <= playerPokemonHP - 5) {
       setPlayerPokemonHP(newHP);
     } else {
@@ -75,44 +91,50 @@ const Duel = ({ selectedPokemon }) => {
       return;
     }
   }
-  function startDuel() {
+
+  function startDuel(category) {
     // remove attack button while attacking
     setAttacking(true);
     // decide who attacks first based on speed characteristic
     if (playerPokemon.base.Speed > computerPokemon.base.Speed) {
-      playerAttack();
+      playerAttack(category);
       setTimeout(() => {
-        computerAtack();
+        computerAtack(category);
       }, 2000);
     } else if (playerPokemon.base.Speed < computerPokemon.base.Speed) {
-      computerAtack();
+      computerAtack(category);
       setTimeout(() => {
-        playerAttack();
+        playerAttack(category);
       }, 2000);
     }
   }
 
   return (
-    <div>
-      {playerPokemon && computerPokemon && !winner && (
-        <div>
-          <p>
-            {playerPokemon.name.english} Player HP {playerPokemonHP}
-          </p>
-          <p>
-            {computerPokemon.name.english} Computer HP {computerPokemonHP}
-          </p>
-        </div>
-      )}
+    <>
       <div>
-        {!attacking && !winner && (
-          <>
-            <button onClick={() => startDuel()}>Attack</button>
-          </>
+        {playerPokemon && computerPokemon && !winner && (
+          <div>
+            <p>
+              {playerPokemon.name.english} Player HP {playerPokemonHP}
+            </p>
+            <p>
+              {computerPokemon.name.english} Computer HP {computerPokemonHP}
+            </p>
+          </div>
         )}
+        <div>
+          {!attacking && !winner && (
+            <>
+              <button onClick={() => startDuel('normal')}>Attack</button>
+              <button onClick={() => startDuel('special')}>
+                Special Attack
+              </button>
+            </>
+          )}
+        </div>
+        <div>{winner && <p>{winner}</p>}</div>
       </div>
-      <div>{winner && <p>{winner}</p>}</div>
-    </div>
+    </>
   );
 };
 
