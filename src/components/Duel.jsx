@@ -22,6 +22,10 @@ const Duel = ({ selectedPokemon }) => {
       .catch((err) => console.log(err));
   }, []);
 
+// get pokemon sprites
+
+
+
   //   set inital states
   useEffect(() => {
     if (playerPokemon && computerPokemon) {
@@ -96,14 +100,14 @@ const Duel = ({ selectedPokemon }) => {
 
   return (
 
-      <Box className='arena' sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'center', alignItems: 'center' }}>
+      <Box className='arena' sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'end', alignItems: 'center' }}>
         <div>
           {playerPokemon && computerPokemon && !winner && (
             <div>
-              <p>
+              <p style={{color: 'white'}}>
                 {playerPokemon.name.english} Player HP {playerPokemonHP}
               </p>
-              <p>
+              <p style={{color: 'white'}}>
                 {computerPokemon.name.english} Computer HP {computerPokemonHP}
               </p>
             </div>
@@ -111,7 +115,8 @@ const Duel = ({ selectedPokemon }) => {
           <div>
             {!attacking && !winner && (
               <>
-                <Button variant="contained" color="success" onClick={() => startDuel()}>Attack</Button>
+                <Button variant="contained" color="success" sx={{m:2}} onClick={() => startDuel()}>Attack</Button>
+                <Button variant="contained" color="warning" sx={{m:2}} onClick={() => startDuel()}>Special Attack</Button>
               </>
             )}
           </div>

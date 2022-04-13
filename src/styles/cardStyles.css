@@ -54,12 +54,14 @@ a.detailsButton{
 .arena{
     background-image: url('../../public/img/Arena1.jpg');
     background-repeat: no-repeat;
-    background-size: 1600px auto;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     position:absolute;
     top:0;
     bottom:0;
     left:0;
-    right:0;
+    right:0; 
     overflow:hidden;
     z-index:-1;
 }
