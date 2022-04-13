@@ -4,12 +4,20 @@ import {Grid, CircularProgress, TextField} from '@mui/material'
 import "../styles/cardStyles.css"
 import Pagination from './Pagination'
 
-const PokemonContainer = ({ allPokemon, choosePokemon, loading, currentPokemons, pokemonsPerPage, paginate }) => {
-
-  if(loading) {
-    return <>
-          <CircularProgress />
-    </>
+const PokemonContainer = ({
+  allPokemon,
+  choosePokemon,
+  loading,
+  currentPokemons,
+  pokemonsPerPage,
+  paginate,
+}) => {
+  if (loading) {
+    return (
+      <>
+        <CircularProgress />
+      </>
+    );
   }
 
   return (
@@ -38,9 +46,8 @@ const PokemonContainer = ({ allPokemon, choosePokemon, loading, currentPokemons,
           </Grid>
         </Grid>
       </Grid>
-
     </>
   );
-}
+};
 
 export default PokemonContainer;
