@@ -23,10 +23,6 @@ const Duel = ({ selectedPokemon }) => {
       .catch((err) => console.log(err));
   }, []);
 
-// get pokemon sprites
-
-
-
   //   set inital states
   useEffect(() => {
     if (playerPokemon && computerPokemon) {

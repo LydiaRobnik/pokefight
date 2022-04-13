@@ -5,8 +5,8 @@ import { purple, deepPurple, green, lightGreen, grey, deepOrange, lightBlue, amb
 import "../styles/cardStyles.css"
 
 
-const PokemonCard = ({ pokemon, choosePokemon }) => {
-  
+const PokemonCard = ({ pokemon, choosePokemon, pokemonSprites }) => {
+  // console.log(pokemonSprites)
   const typeColor = {
     Grass : green[600],
     Poison : deepPurple[400], 
@@ -31,7 +31,7 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
                 component="img"
                 alt="pokemon"
                 height="200"
-                image="../../img/1.png"
+                image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/200.png"
               />
               <CardContent sx={{py: 0.5}}>
                 <p>Nr. {pokemon.id}</p>

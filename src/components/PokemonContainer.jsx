@@ -11,7 +11,9 @@ const PokemonContainer = ({
   currentPokemons,
   pokemonsPerPage,
   paginate,
+  pokemonSprites
 }) => {
+// loading condition
   if (loading) {
     return (
       <>
@@ -20,6 +22,7 @@ const PokemonContainer = ({
     );
   }
 
+  console.log(`PokemonSprites: ${pokemonSprites}`)
   return (
     <>    
       <Grid  className="background" container spacing={2} sx={{display: 'flex', flexDirection: 'column',  alignItems: 'center' }}>
@@ -40,7 +43,7 @@ const PokemonContainer = ({
           <Grid container spacing={2} sx={{display: 'flex', flexDirection: 'row',  justifyContent: 'center' }}> 
             {allPokemon && currentPokemons.map(pokemon => 
               (<Grid item key={pokemon.id} >
-                <PokemonCard pokemon={pokemon} choosePokemon={choosePokemon} />
+                <PokemonCard pokemon={pokemon} pokemonSprite={pokemonSprites[pokemon.id - 1]} choosePokemon={choosePokemon} />
               </Grid>)
             )}
           </Grid>
