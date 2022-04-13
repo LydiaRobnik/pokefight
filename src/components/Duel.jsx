@@ -1,5 +1,7 @@
 import { CallToAction } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
+import "../styles/cardStyles.css"
+import {Button, Box} from '@mui/material';
 
 const Duel = ({ selectedPokemon }) => {
   // useStates
@@ -20,6 +22,10 @@ const Duel = ({ selectedPokemon }) => {
       .then((data) => setComputerPokemon(data))
       .catch((err) => console.log(err));
   }, []);
+
+// get pokemon sprites
+
+
 
   //   set inital states
   useEffect(() => {
@@ -110,32 +116,32 @@ const Duel = ({ selectedPokemon }) => {
   }
 
   return (
-    <>
-      <div>
-        {playerPokemon && computerPokemon && !winner && (
-          <div>
-            <p>
-              {playerPokemon.name.english} Player HP {playerPokemonHP}
-            </p>
-            <p>
-              {computerPokemon.name.english} Computer HP {computerPokemonHP}
-            </p>
-          </div>
-        )}
+
+      <Box className='arena' sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'end', alignItems: 'center' }}>
         <div>
-          {!attacking && !winner && (
-            <>
-              <button onClick={() => startDuel('normal')}>Attack</button>
-              <button onClick={() => startDuel('special')}>
-                Special Attack
-              </button>
-            </>
+          {playerPokemon && computerPokemon && !winner && (
+            <div>
+              <p style={{color: 'white'}}>
+                {playerPokemon.name.english} Player HP {playerPokemonHP}
+              </p>
+              <p style={{color: 'white'}}>
+                {computerPokemon.name.english} Computer HP {computerPokemonHP}
+              </p>
+            </div>
           )}
+          <div>
+            {!attacking && !winner && (
+              <>
+                <Button variant="contained" color="success" sx={{m:2}} onClick={() => startDuel('normal')}>Attack</Button>
+                <Button variant="contained" color="warning" sx={{m:2}} onClick={() => startDuel('special')}>Special Attack</Button>
+              </>
+            )}
+          </div>
+          <div>{winner && <p>{winner}</p>}</div>
         </div>
-        <div>{winner && <p>{winner}</p>}</div>
-      </div>
-    </>
+      </Box>
+  
   );
-};
+};    
 
 export default Duel;
