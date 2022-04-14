@@ -1,0 +1,19 @@
+* {
+    text-align: center;
+    font-family: "Roboto";
+}
+
+.pokeball:hover {
+  transform: scale(1.1);
+  cursor: pointer  
+}
+
+.picture {
+    max-width: 100%;
+    height: auto;
+}
+
+.h1detail{
+  color: darkgrey;
+  letter-spacing: 5px;
+}
