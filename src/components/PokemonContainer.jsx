@@ -10,15 +10,17 @@ const PokemonContainer = ({
   loading,
   currentPokemons,
   pokemonsPerPage,
-  paginate,
+  paginate
 }) => {
+// loading condition
   if (loading) {
     return (
       <>
         <CircularProgress />
       </>
     );
-  }
+  } 
+
 
   return (
     <>    

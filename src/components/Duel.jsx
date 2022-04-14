@@ -23,10 +23,6 @@ const Duel = ({ selectedPokemon }) => {
       .catch((err) => console.log(err));
   }, []);
 
-// get pokemon sprites
-
-
-
   //   set inital states
   useEffect(() => {
     if (playerPokemon && computerPokemon) {
@@ -121,9 +117,16 @@ const Duel = ({ selectedPokemon }) => {
         <div>
           {playerPokemon && computerPokemon && !winner && (
             <div>
-              <p style={{color: 'white'}}>
-                {playerPokemon.name.english} Player HP {playerPokemonHP}
-              </p>
+              <div>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${playerPokemon.id}.png`} alt="player Pokemon" />
+                <p style={{color: 'white'}}>
+                  {playerPokemon.name.english} Player HP {playerPokemonHP}
+                </p>
+              </div>
+              <div>
+
+              </div>
+              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${computerPokemon.id}.png`} alt="player Pokemon" />
               <p style={{color: 'white'}}>
                 {computerPokemon.name.english} Computer HP {computerPokemonHP}
               </p>
