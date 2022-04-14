@@ -85,3 +85,8 @@ a.detailsButton{
     font-size: 2rem;
     text-align: center;
 }
+
+#bar{
+    width: 70%;
+    background-color: yellow;
+  }

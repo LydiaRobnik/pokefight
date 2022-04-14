@@ -1,7 +1,7 @@
-import { CallToAction } from '@mui/icons-material';
-import React, { useState, useEffect } from 'react';
-import "../styles/cardStyles.css"
-import {Button, Box} from '@mui/material';
+import { CallToAction } from "@mui/icons-material";
+import React, { useState, useEffect } from "react";
+import "../styles/cardStyles.css";
+import { Button, Box } from "@mui/material";
 
 const Duel = ({ selectedPokemon }) => {
   // useStates
@@ -48,18 +48,18 @@ const Duel = ({ selectedPokemon }) => {
   //   functions
 
   function choosePlayerAttack(category) {
-    if (category === 'normal') {
+    if (category === "normal") {
       return playerPokemon.base.Attack;
-    } else if (category === 'special') {
-      return playerPokemon.base['Sp. Attack'];
+    } else if (category === "special") {
+      return playerPokemon.base["Sp. Attack"];
     }
   }
 
   function chooseComputerAttack(category) {
-    if (category === 'normal') {
+    if (category === "normal") {
       return computerPokemon.base.Attack;
-    } else if (category === 'special') {
-      return computerPokemon.base['Sp. Attack'];
+    } else if (category === "special") {
+      return computerPokemon.base["Sp. Attack"];
     }
   }
 
@@ -86,9 +86,9 @@ const Duel = ({ selectedPokemon }) => {
 
   function decideWinner() {
     if (playerPokemonHP <= 0) {
-      setWinner('Computer wins');
+      setWinner("Computer wins");
     } else if (computerPokemonHP <= 0) {
-      setWinner('Player wins');
+      setWinner("Player wins");
     } else {
       return;
     }
@@ -112,40 +112,85 @@ const Duel = ({ selectedPokemon }) => {
   }
 
   return (
-
-      <Box className='arena' sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'center', alignItems: 'center' }}>
-        
-          {playerPokemon && computerPokemon && !winner && (
-            <Box sx={{width: 1000, height: 800, display: 'flex', flexDirection: 'row',  justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <img className="duelImg" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${playerPokemon.id}.gif`} alt="player Pokemon" />
-                <p className="duelText">
-                  {playerPokemon.name.english} 
-                </p>
-                <p className="duelHP">Player HP {playerPokemonHP}</p>
-              </div>
-              <div>
-                <img className="duelImg"  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${computerPokemon.id}.gif`} alt="computer Pokemon" />
-                <p className="duelText">
-                  {computerPokemon.name.english} 
-                </p>
-                <p className="duelHP">Computer HP {computerPokemonHP}</p>
-              </div>
-            </Box>
-          )}
-          <Box>
-            {!attacking && !winner && (
-              <>
-                <Button variant="contained" color="success" sx={{m:2}} onClick={() => startDuel('normal')}>Attack</Button>
-                <Button variant="contained" color="warning" sx={{m:2}} onClick={() => startDuel('special')}>Special Attack</Button>
-              </>
-            )}
-          </Box>
-          <Box>{winner && <p>{winner}</p>}</Box>
-        
+    <Box
+      className="arena"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {playerPokemon && computerPokemon && !winner && (
+        <Box
+          sx={{
+            width: 1000,
+            height: 800,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <img
+              className="duelImg"
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${playerPokemon.id}.gif`}
+              alt="player Pokemon"
+            />
+            <p className="duelText">{playerPokemon.name.english}</p>
+            <progress
+              id="bar"
+              value={playerPokemonHP}
+              max={playerPokemon.base.HP}
+            ></progress>
+            <p className="duelHP">
+              Player HP {playerPokemonHP} / {playerPokemon.base.HP}
+            </p>
+          </div>
+          <div>
+            <img
+              className="duelImg"
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${computerPokemon.id}.gif`}
+              alt="computer Pokemon"
+            />
+            <p className="duelText">{computerPokemon.name.english}</p>
+            <progress
+              id="bar"
+              value={computerPokemonHP}
+              max={computerPokemon.base.HP}
+            ></progress>
+            <p className="duelHP">
+              Computer HP {computerPokemonHP} / {computerPokemon.base.HP}
+            </p>
+          </div>
+        </Box>
+      )}
+      <Box>
+        {!attacking && !winner && (
+          <>
+            <Button
+              variant="contained"
+              color="success"
+              sx={{ m: 2 }}
+              onClick={() => startDuel("normal")}
+            >
+              Attack
+            </Button>
+            <Button
+              variant="contained"
+              color="warning"
+              sx={{ m: 2 }}
+              onClick={() => startDuel("special")}
+            >
+              Special Attack
+            </Button>
+          </>
+        )}
       </Box>
-  
+      <Box>{winner && <p>{winner}</p>}</Box>
+    </Box>
   );
-};    
+};
 
 export default Duel;

@@ -83,10 +83,7 @@ const PokemonDetail = () => {
                     {pokemon.type[0]}
                   </Button>
                   {pokemon.type[1] && (
-                    <Button
-                      variant="contained"
-                      sx={{ bgcolor: typeColor[pokemon.type[1]] }}
-                    >
+                    <Button variant="contained" color="primary">
                       {pokemon.type[1]}
                     </Button>
                   )}
