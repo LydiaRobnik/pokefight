@@ -11,7 +11,7 @@ function App() {
   const [selectedPokemon, setSelectedPokemon] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage] = useState(24);
-  const [pokemonSprites, setPokemonSprites]= useState([])
+
 
   // fetch
   useEffect(() => {
@@ -20,13 +20,6 @@ function App() {
       const response = await fetch('https://pokefight-backend.herokuapp.com/pokemon/');
       const json = await response.json();
       setAllPokemon(json);
-
-      allPokemon && allPokemon.map(pokemon => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`)
-        .then(res => res.json())
-        .then (data => setPokemonSprites(...pokemonSprites, data.sprites))
-        .catch(err => console.log(err))
-        });
         
       setLoading(false);
       }
@@ -34,6 +27,17 @@ function App() {
 
   }, []);
 
+
+  // useEffect(() => {
+    
+  //   allPokemon.forEach(pokemon => 
+  //     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.id}`)
+  //     .then(response => response.json())
+  //     .then (data => setPokemonSprites(...pokemonSprites, data.sprites))
+  //     .catch(err => console.log(err))
+  // );
+
+  // }, [allPokemon]);
 
   // functions
   function choosePokemon(select) {
@@ -60,7 +64,6 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
                 currentPokemons={currentPokemons}
                 pokemonsPerPage={pokemonsPerPage}
                 paginate={paginate}
-                pokemonSprites={pokemonSprites}
               />
             </>
             }
@@ -68,7 +71,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
           <Route path="/pokemon/:id" element={<PokemonDetail />}></Route>
           <Route
             path="/duel"
-            element={<Duel selectedPokemon={selectedPokemon} />}
+            element={<Duel selectedPokemon={selectedPokemon} allPokemon={allPokemon}/>}
           ></Route>
         </Routes>
       </main>
