@@ -118,14 +118,19 @@ const Duel = ({ selectedPokemon }) => {
           {playerPokemon && computerPokemon && !winner && (
             <Box sx={{width: 1000, height: 800, display: 'flex', flexDirection: 'row',  justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <img className="duelImg" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${playerPokemon.id}.gif`} alt="player Pokemon" />
+                <img className="duelImg" src={playerPokemon.id < 650 ? 
+                `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${playerPokemon.id}.gif` :
+                `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${playerPokemon.id}.png` } alt="player Pokemon" />
+
                 <p className="duelText">
                   {playerPokemon.name.english} 
                 </p>
                 <p className="duelHP">Player HP {playerPokemonHP}</p>
               </div>
               <div>
-                <img className="duelImg"  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${computerPokemon.id}.gif`} alt="computer Pokemon" />
+                <img className="duelImg"  src={playerPokemon.id < 650 ? 
+                `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${computerPokemon.id}.gif`:
+                `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${playerPokemon.id}.png`} alt="computer Pokemon" />
                 <p className="duelText">
                   {computerPokemon.name.english} 
                 </p>
@@ -141,7 +146,7 @@ const Duel = ({ selectedPokemon }) => {
               </>
             )}
           </Box>
-          <Box>{winner && <p>{winner}</p>}</Box>
+          <Box>{winner && <p className="duelWinner">{winner}</p>}</Box>
         
       </Box>
   

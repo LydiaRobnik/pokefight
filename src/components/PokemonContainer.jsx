@@ -15,12 +15,13 @@ const PokemonContainer = ({
 // states
 const [filter, setFilter] = useState('')
 const [filterResult, setFilterResult] = useState([])
+const [type, setType] = useState('')
 
 // loading condition
   if (loading) {
     return (
       <>
-        <CircularProgress />
+        <CircularProgress className="loading"/>
       </>
     );
   } 
@@ -31,7 +32,12 @@ const [filterResult, setFilterResult] = useState([])
     setFilterResult(filteredPokemon);
   }
 
-
+//   const handleType = () => {
+//     console.log(type)
+//     // const filterType = allPokemon.filter(pokemon => pokemon.type === `${type}`);
+//     // setFilterResult(filterType);
+  
+// }
 
   return (
     <>    
@@ -65,7 +71,7 @@ const [filterResult, setFilterResult] = useState([])
               )
               : allPokemon && currentPokemons.map(pokemon => 
                 (<Grid item key={pokemon.id} >
-                  <PokemonCard pokemon={pokemon} choosePokemon={choosePokemon} />
+                  <PokemonCard pokemon={pokemon} choosePokemon={choosePokemon} type={type} setType={setType} handleSearch={handleSearch}/>
                 </Grid>)
                 )
               }            

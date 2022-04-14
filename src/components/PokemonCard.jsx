@@ -25,8 +25,8 @@ import {
 } from "@mui/material/colors";
 import "../styles/cardStyles.css";
 
-const PokemonCard = ({ pokemon, choosePokemon }) => {
-  // console.log(pokemonSprites)
+const PokemonCard = ({ pokemon, choosePokemon, type, setType, handleSearch }) => {
+
   const typeColor = {
     Grass: green[600],
     Poison: deepPurple[400],
@@ -41,6 +41,7 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
     Fighting: red[500],
     Psychic: purple[400],
   };
+
 
   return (
     <>
@@ -77,7 +78,7 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
             {pokemon &&
               pokemon.type.map((type) => (
                 <>
-                  <Button
+                  <Button onClick={(event) => {setType(event.target.value) } }
                     variant="contained"
                     sx={{
                       bgcolor: typeColor[type],
