@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import {
   Card,
   CardActions,
@@ -8,7 +8,7 @@ import {
   Button,
   Typography,
   Box,
-} from "@mui/material";
+} from '@mui/material';
 import {
   purple,
   deepPurple,
@@ -22,11 +22,16 @@ import {
   red,
   brown,
   cyan,
-} from "@mui/material/colors";
-import "../styles/cardStyles.css";
+} from '@mui/material/colors';
+import '../styles/cardStyles.css';
 
-const PokemonCard = ({ pokemon, choosePokemon, type, setType, handleSearch }) => {
-
+const PokemonCard = ({
+  pokemon,
+  choosePokemon,
+  type,
+  setType,
+  handleSearch,
+}) => {
   const typeColor = {
     Grass: green[600],
     Poison: deepPurple[400],
@@ -41,7 +46,6 @@ const PokemonCard = ({ pokemon, choosePokemon, type, setType, handleSearch }) =>
     Fighting: red[500],
     Psychic: purple[400],
   };
-
 
   return (
     <>
@@ -62,29 +66,32 @@ const PokemonCard = ({ pokemon, choosePokemon, type, setType, handleSearch }) =>
         </CardContent>
         <CardActions
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
           }}
         >
           <Box
             sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'center',
               width: 1,
             }}
           >
             {pokemon &&
               pokemon.type.map((type) => (
                 <>
-                  <Button onClick={(event) => {setType(event.target.value) } }
+                  <Button
+                    onClick={(event) => {
+                      setType(event.target.value);
+                    }}
                     variant="contained"
                     sx={{
                       bgcolor: typeColor[type],
                       m: 0.5,
-                      width: "40%",
-                      cursor: "not-allowed",
+                      width: '40%',
+                      cursor: 'not-allowed',
                     }}
                   >
                     {type}
@@ -92,7 +99,7 @@ const PokemonCard = ({ pokemon, choosePokemon, type, setType, handleSearch }) =>
                 </>
               ))}
           </Box>
-          <NavLink className="detailsButton" to="/pokemon/:id">
+          <NavLink className="detailsButton" to={`/pokemon/${pokemon.id}`}>
             <Button
               sx={{ m: 0.5, width: 200 }}
               variant="outlined"

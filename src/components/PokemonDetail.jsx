@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import "../styles/detailStyles.css";
-import img from "../img/1.1.png";
-import pokeball from "../img/poke-ball.png";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import '../styles/detailStyles.css';
+import img from '../img/1.1.png';
+import pokeball from '../img/poke-ball.png';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
 import {
   purple,
   deepPurple,
@@ -18,10 +18,10 @@ import {
   red,
   brown,
   cyan,
-} from "@mui/material/colors";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
+} from '@mui/material/colors';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
 
 const PokemonDetail = () => {
   const [pokemon, setPokemon] = useState();
@@ -43,14 +43,15 @@ const PokemonDetail = () => {
   };
 
   const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
 
   useEffect(() => {
+    console.log(id, 'testid');
     fetch(`https://pokefight-backend.herokuapp.com/pokemon/${id}`)
       .then((res) => res.json())
       .then((data) => setPokemon(data))
@@ -58,20 +59,18 @@ const PokemonDetail = () => {
       .catch((err) => console.log(err));
   }, []);
 
-
-// alternativ:
+  // alternativ:
   // useEffect(() => {
   //   const fetchData = async() => {
   //     // setLoading(true);
   //     const response = await fetch('https://pokefight-backend.herokuapp.com/pokemon/${id}');
   //     const json = await response.json();
   //     setPokemon(json);
-        
+
   //     // setLoading(false);
   //     }
-  //   fetchData(); 
+  //   fetchData();
   // }, []);
-
 
   return (
     <>
@@ -90,7 +89,7 @@ const PokemonDetail = () => {
                 <h2>
                   <Button
                     sx={{
-                      margin: "5px",
+                      margin: '5px',
                       bgcolor: typeColor[pokemon.type[0]],
                     }}
                     variant="contained"
@@ -114,8 +113,8 @@ const PokemonDetail = () => {
                 <p>HP: {pokemon.base.HP}</p>
                 <p>Attack: {pokemon.base.Attack}</p>
                 <p>Defense: {pokemon.base.Defense}</p>
-                <p>Sp.Attack: {pokemon.base["Sp. Attack"]}</p>
-                <p>Sp. Defense: {pokemon.base["Sp. Defense"]}</p>
+                <p>Sp.Attack: {pokemon.base['Sp. Attack']}</p>
+                <p>Sp. Defense: {pokemon.base['Sp. Defense']}</p>
                 <p>Speed: {pokemon.base.Speed}</p>
               </Item>
             </Grid>
