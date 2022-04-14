@@ -49,18 +49,18 @@ const Duel = ({ selectedPokemon }) => {
   //   functions
 
   function choosePlayerAttack(category) {
-    if (category === 'normal') {
+    if (category === "normal") {
       return playerPokemon.base.Attack;
-    } else if (category === 'special') {
-      return playerPokemon.base['Sp. Attack'];
+    } else if (category === "special") {
+      return playerPokemon.base["Sp. Attack"];
     }
   }
 
   function chooseComputerAttack(category) {
-    if (category === 'normal') {
+    if (category === "normal") {
       return computerPokemon.base.Attack;
-    } else if (category === 'special') {
-      return computerPokemon.base['Sp. Attack'];
+    } else if (category === "special") {
+      return computerPokemon.base["Sp. Attack"];
     }
   }
 
@@ -167,9 +167,15 @@ const Duel = ({ selectedPokemon }) => {
               }
               alt="player Pokemon"
             />
-
-            <p className="duelText">{playerPokemon.name.english}</p>
-            <p className="duelHP">Player HP {playerPokemonHP}</p>
+                            <p className="duelText">{playerPokemon.name.english}</p>
+            <progress
+              id="bar"
+              value={playerPokemonHP}
+              max={playerPokemon.base.HP}
+            ></progress>
+            <p className="duelHP">
+              Player HP {playerPokemonHP} / {playerPokemon.base.HP}
+            </p>
           </div>
           <div>
             <img
@@ -182,7 +188,14 @@ const Duel = ({ selectedPokemon }) => {
               alt="computer Pokemon"
             />
             <p className="duelText">{computerPokemon.name.english}</p>
-            <p className="duelHP">Computer HP {computerPokemonHP}</p>
+            <progress
+              id="bar"
+              value={computerPokemonHP}
+              max={computerPokemon.base.HP}
+            ></progress>
+            <p className="duelHP">
+              Computer HP {computerPokemonHP} / {computerPokemon.base.HP}
+            </p>
           </div>
         </Box>
       )}
