@@ -27,7 +27,7 @@ const [filterResult, setFilterResult] = useState([])
 
   // functions
   const handleSearch = () => {
-    const filteredPokemon = allPokemon.filter(pokemon => pokemon.name.english === `${filter}`);
+    const filteredPokemon = allPokemon.filter(pokemon => pokemon.name.english === `${filter}` || pokemon.id === Math.floor(`${filter}`));
     setFilterResult(filteredPokemon);
   }
 
