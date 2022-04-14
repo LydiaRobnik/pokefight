@@ -5,8 +5,8 @@ import { purple, deepPurple, green, lightGreen, grey, deepOrange, lightBlue, amb
 import "../styles/cardStyles.css"
 
 
-const PokemonCard = ({ pokemon, choosePokemon }) => {
-  // console.log(pokemonSprites)
+const PokemonCard = ({ pokemon, choosePokemon, type, setType, handleSearch }) => {
+
   const typeColor = {
     Grass : green[600],
     Poison : deepPurple[400], 
@@ -21,6 +21,7 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
     Fighting: red[500],
     Psychic: purple[400]
   }
+
 
   return (
     <>
@@ -44,7 +45,7 @@ const PokemonCard = ({ pokemon, choosePokemon }) => {
                 <Box sx={{display: 'flex', flexDirection: 'row',  justifyContent: 'center', width: 1 }}>
                   {pokemon && pokemon.type.map((type) =>                  
                       <>
-                        <Button variant="contained" sx={{bgcolor: typeColor[type], m:0.5, width: '40%',cursor: 'not-allowed'}}>{type}</Button>
+                        <Button onClick={(event) => {setType(event.target.value) } } variant="contained" sx={{bgcolor: typeColor[type], m:0.5, width: '40%'}}>{type}</Button>
                       </>                 
                   )}
                 </Box>

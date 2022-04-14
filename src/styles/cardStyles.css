@@ -85,3 +85,16 @@ a.detailsButton{
     font-size: 2rem;
     text-align: center;
 }
+
+.loading{
+    left: 50%;
+    margin-left: -4em;
+}
+
+.duelWinner{
+    color: white;
+    font-family: pokemon;
+    font-size: 5rem;
+    letter-spacing: 2px;
+    text-align: center; 
+}
