@@ -130,7 +130,7 @@ const Duel = ({ selectedPokemon }) => {
               <div>
                 <img className="duelImg"  src={playerPokemon.id < 650 ? 
                 `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${computerPokemon.id}.gif`:
-                `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${playerPokemon.id}.png`} alt="computer Pokemon" />
+                `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${computerPokemon.id}.png`} alt="computer Pokemon" />
                 <p className="duelText">
                   {computerPokemon.name.english} 
                 </p>
