@@ -113,35 +113,36 @@ const Duel = ({ selectedPokemon }) => {
 
   return (
 
-      <Box className='arena' sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'end', alignItems: 'center' }}>
-        <div>
+      <Box className='arena' sx={{display: 'flex', flexDirection: 'column',  justifyContent: 'center', alignItems: 'center' }}>
+        
           {playerPokemon && computerPokemon && !winner && (
-            <div>
+            <Box sx={{width: 1000, height: 800, display: 'flex', flexDirection: 'row',  justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${playerPokemon.id}.png`} alt="player Pokemon" />
-                <p style={{color: 'white'}}>
-                  {playerPokemon.name.english} Player HP {playerPokemonHP}
+                <img className="duelImg" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${playerPokemon.id}.gif`} alt="player Pokemon" />
+                <p className="duelText">
+                  {playerPokemon.name.english} 
                 </p>
+                <p className="duelHP">Player HP {playerPokemonHP}</p>
               </div>
               <div>
-
+                <img className="duelImg"  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${computerPokemon.id}.gif`} alt="computer Pokemon" />
+                <p className="duelText">
+                  {computerPokemon.name.english} 
+                </p>
+                <p className="duelHP">Computer HP {computerPokemonHP}</p>
               </div>
-              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${computerPokemon.id}.png`} alt="player Pokemon" />
-              <p style={{color: 'white'}}>
-                {computerPokemon.name.english} Computer HP {computerPokemonHP}
-              </p>
-            </div>
+            </Box>
           )}
-          <div>
+          <Box>
             {!attacking && !winner && (
               <>
                 <Button variant="contained" color="success" sx={{m:2}} onClick={() => startDuel('normal')}>Attack</Button>
                 <Button variant="contained" color="warning" sx={{m:2}} onClick={() => startDuel('special')}>Special Attack</Button>
               </>
             )}
-          </div>
-          <div>{winner && <p>{winner}</p>}</div>
-        </div>
+          </Box>
+          <Box>{winner && <p>{winner}</p>}</Box>
+        
       </Box>
   
   );

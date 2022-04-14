@@ -65,3 +65,23 @@ a.detailsButton{
     overflow:hidden;
     z-index:-1;
 }
+
+.duelImg{
+    width: 400px;
+    height: auto;
+}
+
+.duelText{
+    color: white;
+    font-family: pokemon;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.duelHP{
+    color: white;
+    font-family: sans-serif;
+    font-size: 2rem;
+    text-align: center;
+}
