@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import PokemonContainer from './components/PokemonContainer.jsx';
 import PokemonDetail from './components/PokemonDetail';
 import Duel from './components/Duel';
+import HighScore from './components/HighScore';
 
 function App() {
   const [loading, setLoading] = useState(false)
@@ -73,6 +74,8 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
             path="/duel"
             element={<Duel selectedPokemon={selectedPokemon} allPokemon={allPokemon}/>}
           ></Route>
+          <Route path="/highscore" element ={<HighScore />}>
+          </Route>
         </Routes>
       </main>
     </div>

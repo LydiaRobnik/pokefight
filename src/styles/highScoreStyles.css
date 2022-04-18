@@ -1,0 +1,36 @@
+body{
+    color: white;
+}
+
+h1{color: white;
+    font-family: pokemon;
+    font-size: 4.5rem;
+    letter-spacing: 6px;
+    text-align: center;
+}
+
+p{color: white;
+    margin: 0.5rem 0;
+}
+
+th {
+    font-size: 3rem;
+    padding: 0.5rem 1rem;
+    background-color: #8400ff;
+}
+
+td {
+    font-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #a950fd;
+}
+
+tr {
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+table {
+    border-collapse: collapse;
+
+}
