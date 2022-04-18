@@ -1,7 +1,8 @@
 import { CallToAction } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
+import { NavLink } from "react-router-dom";
 import '../styles/cardStyles.css';
-import { Button, Box } from '@mui/material';
+import { Button, Box} from '@mui/material';
 import axios from 'axios';
 
 const Duel = ({ selectedPokemon }) => {
@@ -208,7 +209,17 @@ const Duel = ({ selectedPokemon }) => {
           </>
         )}
       </Box>
-      <Box>{winner && <p className="duelWinner">{winner}</p>}</Box>
+      <Box>{winner && 
+      <>
+        <p className="duelWinner">{winner}</p>
+        <NavLink to={"/"}>
+          <Button variant="contained" color="secondary" sx={{ m: 2 }}>Play again</Button>
+        </NavLink>
+        <NavLink to={"/highscore"}>
+          <Button variant="contained" color="secondary" sx={{ m: 2 }}>Show High Score</Button>
+        </NavLink>
+      </>
+      }</Box>
     </Box>
   );
 };
