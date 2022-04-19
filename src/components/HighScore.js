@@ -28,7 +28,10 @@ const HighScore = () => {
                 <Button variant="contained" size='large' sx={{ m: 2, bgcolor: 'orange'}}>Back to Game</Button>
             </NavLink>
 
-            <Box style={{height: 800, width: '60%'}} sx={{mt: 3}}>
+            <Box style={{height: 700, width: '60%'}} sx={{mt: 3, display: "flex",
+            flexDirection: "column",
+            justifyContent: "start",
+            alignItems: "center" }}>
                 <table>
                     <thead>
                         <tr>
