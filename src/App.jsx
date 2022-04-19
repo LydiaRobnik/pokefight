@@ -69,7 +69,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber);
             </>
             }
           ></Route>
-          <Route path="/pokemon/:id" element={<PokemonDetail />}></Route>
+          <Route path="/pokemon/:id" element={<PokemonDetail choosePokemon={choosePokemon} />}></Route>
           <Route
             path="/duel"
             element={<Duel selectedPokemon={selectedPokemon} allPokemon={allPokemon}/>}
