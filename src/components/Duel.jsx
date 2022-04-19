@@ -44,7 +44,7 @@ const Duel = ({ selectedPokemon }) => {
     if (!winner) {
       decideWinner();
     }
-  }, [playerPokemonHP, computerPokemonHP, winner, decideWinner]);
+  }, [playerPokemonHP, computerPokemonHP]);
 
   //   functions
 
