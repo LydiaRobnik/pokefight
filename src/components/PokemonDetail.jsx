@@ -62,19 +62,6 @@ const PokemonDetail = ({ choosePokemon }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  // alternativ:
-  // useEffect(() => {
-  //   const fetchData = async() => {
-  //     // setLoading(true);
-  //     const response = await fetch('https://pokefight-backend.herokuapp.com/pokemon/${id}');
-  //     const json = await response.json();
-  //     setPokemon(json);
-
-  //     // setLoading(false);
-  //     }
-  //   fetchData();
-  // }, []);
-
   return (
     <>
       {pokemon && (
@@ -134,7 +121,7 @@ const PokemonDetail = ({ choosePokemon }) => {
                     className="pokeball"
                     alt="Pokeball"
                     to="/duel"
-                    onClick={(e) => choosePokemon(pokemon.id)}
+                    onClick={(e) => choosePokemon(pokemon)}
                   />
                 </NavLink>
               </Item>
