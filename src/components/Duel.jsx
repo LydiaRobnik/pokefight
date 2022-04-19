@@ -1,4 +1,3 @@
-import { CallToAction } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import '../styles/cardStyles.css';
@@ -8,7 +7,7 @@ import axios from 'axios';
 const Duel = ({ selectedPokemon }) => {
   // useStates
 
-  const [playerPokemon, setPlayerPokemon] = useState(selectedPokemon);
+  const [playerPokemon] = useState(selectedPokemon);
   const [computerPokemon, setComputerPokemon] = useState();
   const [playerPokemonHP, setPlayerPokemonHP] = useState();
   const [computerPokemonHP, setComputerPokemonHP] = useState();
@@ -45,7 +44,7 @@ const Duel = ({ selectedPokemon }) => {
     if (!winner) {
       decideWinner();
     }
-  }, [playerPokemonHP, computerPokemonHP]);
+  }, [playerPokemonHP, computerPokemonHP, winner, decideWinner]);
 
   //   functions
 

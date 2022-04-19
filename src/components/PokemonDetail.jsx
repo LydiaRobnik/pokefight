@@ -22,7 +22,6 @@ import {
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { autocompleteClasses } from "@mui/material";
 
 const PokemonDetail = ({ choosePokemon }) => {
   const [pokemon, setPokemon] = useState();
@@ -54,8 +53,7 @@ const PokemonDetail = ({ choosePokemon }) => {
   }));
 
   useEffect(() => {
-    console.log(id, "testid");
-    fetch(`https://pokefight-backend.herokuapp.com/pokemon/${id}`)
+      fetch(`https://pokefight-backend.herokuapp.com/pokemon/${id}`)
       .then((res) => res.json())
       .then((data) => setPokemon(data))
       .then((poke) => console.log(poke))
